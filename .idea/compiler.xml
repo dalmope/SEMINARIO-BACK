@@ -8,12 +8,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="crud" />
         <module name="BACK" />
+        <module name="SEMINARIO-BACK" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="BACK" options="-parameters" />
+      <module name="SEMINARIO-BACK" options="-parameters" />
       <module name="crud" options="-parameters" />
     </option>
   </component>

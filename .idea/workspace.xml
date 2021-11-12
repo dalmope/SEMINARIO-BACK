@@ -5,16 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd456f95-70a6-4715-9187-1496d4844a21" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../FRONT/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../FRONT/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FRONT/src/app/menu/menu.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../FRONT/src/app/menu/menu.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FRONT/src/app/producto/detalle-producto.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../FRONT/src/app/producto/detalle-producto.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FRONT/src/app/producto/detalle-producto.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../FRONT/src/app/producto/detalle-producto.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FRONT/src/app/producto/editar-producto.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../FRONT/src/app/producto/editar-producto.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FRONT/src/app/producto/editar-producto.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../FRONT/src/app/producto/editar-producto.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FRONT/src/app/producto/lista-producto.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../FRONT/src/app/producto/lista-producto.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FRONT/src/app/producto/nuevo-producto.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../FRONT/src/app/producto/nuevo-producto.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FRONT/src/app/producto/nuevo-producto.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../FRONT/src/app/producto/nuevo-producto.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FRONT/src/app/service/producto.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../FRONT/src/app/service/producto.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tutorial/crud/CrudApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tutorial/crud/CrudApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tutorial/crud/controller/ProductoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tutorial/crud/controller/ProductoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tutorial/crud/dto/Mensaje.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tutorial/crud/dto/Mensaje.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tutorial/crud/dto/ProductoDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tutorial/crud/dto/ProductoDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tutorial/crud/emailpassword/config/ThymeleafTemplateConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tutorial/crud/emailpassword/config/ThymeleafTemplateConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tutorial/crud/emailpassword/controller/EmailController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tutorial/crud/emailpassword/controller/EmailController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tutorial/crud/emailpassword/dto/ChangePasswordDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tutorial/crud/emailpassword/dto/ChangePasswordDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tutorial/crud/emailpassword/dto/EmailValuesDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tutorial/crud/emailpassword/dto/EmailValuesDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tutorial/crud/emailpassword/service/EmailService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tutorial/crud/emailpassword/service/EmailService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tutorial/crud/entity/Producto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tutorial/crud/entity/Producto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tutorial/crud/repository/ProductoRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tutorial/crud/repository/ProductoRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/MainSecurity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/MainSecurity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/controller/AuthController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/dto/JwtDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/dto/JwtDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/dto/LoginUsuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/dto/LoginUsuario.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/dto/NuevoUsuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/dto/NuevoUsuario.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/entity/Rol.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/entity/Rol.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/entity/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/entity/Usuario.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/entity/UsuarioPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/entity/UsuarioPrincipal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/enums/RolNombre.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/enums/RolNombre.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/jwt/JwtEntryPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/jwt/JwtEntryPoint.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/jwt/JwtProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/jwt/JwtProvider.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/jwt/JwtTokenFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/jwt/JwtTokenFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/repository/RolRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/repository/RolRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/repository/UsuarioRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/repository/UsuarioRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/service/RolService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/service/RolService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/service/UserDetailsServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/service/UserDetailsServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/service/UsuarioService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tutorial/crud/security/service/UsuarioService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tutorial/crud/service/ProductoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tutorial/crud/service/ProductoService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tutorial/crud/swagger/SwaggerConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tutorial/crud/swagger/SwaggerConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/tutorial/crud/util/CreateRoles.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tutorial/crud/util/CreateRoles.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/tutorial/crud/CrudApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/tutorial/crud/CrudApplicationTests.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +57,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
