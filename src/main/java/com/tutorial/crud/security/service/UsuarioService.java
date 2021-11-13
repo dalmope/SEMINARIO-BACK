@@ -44,8 +44,8 @@ public class UsuarioService {
         usuarioRepository.save(usuario);
     }
 
-    public void delete(Usuario usuario){
-        usuarioRepository.delete(usuario);
+    public void delete(int id){
+        usuarioRepository.deleteById(id);
     }
 
     public Optional<Usuario> getById(int id){
