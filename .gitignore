@@ -1,2 +1,3 @@
-target/classes/application.properties
+.idea/
+target/
 src/main/resources/application.properties
