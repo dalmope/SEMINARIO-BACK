@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd456f95-70a6-4715-9187-1496d4844a21" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../FRONT/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../FRONT/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FRONT/src/app/menu/menu.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../FRONT/src/app/menu/menu.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FRONT/src/app/producto/detalle-producto.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../FRONT/src/app/producto/detalle-producto.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FRONT/src/app/producto/detalle-producto.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../FRONT/src/app/producto/detalle-producto.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FRONT/src/app/producto/editar-producto.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../FRONT/src/app/producto/editar-producto.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FRONT/src/app/producto/editar-producto.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../FRONT/src/app/producto/editar-producto.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FRONT/src/app/producto/lista-producto.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../FRONT/src/app/producto/lista-producto.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FRONT/src/app/producto/nuevo-producto.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../FRONT/src/app/producto/nuevo-producto.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FRONT/src/app/producto/nuevo-producto.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../FRONT/src/app/producto/nuevo-producto.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FRONT/src/app/service/producto.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../FRONT/src/app/service/producto.service.ts" afterDir="false" />
-    </list>
+    <list default="true" id="cd456f95-70a6-4715-9187-1496d4844a21" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,7 +19,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -179,6 +168,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1627856552072" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
@@ -250,6 +241,29 @@
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="johan" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tutorial/crud/util/CreateRoles.java">
