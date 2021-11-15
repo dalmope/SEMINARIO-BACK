@@ -10,24 +10,23 @@ public class ProductoDto {
     @Min(0)
     private Float precio;
     private int cantidad;
-    private String descripcion;
-    private int idCategoria;
-    private int idProveedor;
     private Double iva;
     private Double retencion;
+    private int cantidad_minima;
+    private int idCategoria;
 
     public ProductoDto() {
     }
 
-    public ProductoDto(@NotBlank String nombre,  Float precio, int cantidad,String descripcion, int idCategoria,int idProveedor, Double iva, Double retencion) {
+    public ProductoDto(@NotBlank String nombre,  Float precio, int cantidad, Double iva, Double retencion, int cantidadMinima, int idCategoria) {
         this.nombre = nombre;
         this.precio = precio;
         this.cantidad = cantidad;
-        this.descripcion = descripcion;
-        this.idCategoria = idCategoria;
-        this.idProveedor = idProveedor;
         this.iva = iva;
         this.retencion = retencion;
+        this.cantidad_minima = cantidadMinima;
+        this.idCategoria = idCategoria;
+    
     }
 
     public ProductoDto(@NotBlank String nombre, @Min(0) Float precio) {
@@ -65,31 +64,7 @@ public class ProductoDto {
         this.cantidad = cantidad;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public int getIdCategoria() {
-        return idCategoria;
-    }
-
-    public void setIdCategoria(int idCategoria) {
-        this.idCategoria = idCategoria;
-    }
-
-    public int getIdProveedor() {
-        return idProveedor;
-    }
-
-    public void setIdProveedor(int idProveedor) {
-        this.idProveedor = idProveedor;
-    }
-
-    public Double getIva() {
+      public Double getIva() {
         return iva;
     }
 
@@ -105,17 +80,34 @@ public class ProductoDto {
         this.retencion = retencion;
     }
 
+    public int getCantidad_minima() {
+        return cantidad_minima;
+    }
+
+    public void setCantidad_minima(int cantidad_minima) {
+        this.cantidad_minima = cantidad_minima;
+    }
+
+    public int getIdCategoria() {
+        return idCategoria;
+    }
+
+    public void setIdCategoria(int idCategoria) {
+        this.idCategoria = idCategoria;
+    }
+
+  
+
     @Override
     public String toString() {
         return "ProductoDto{" +
                 "nombre='" + nombre + '\'' +
                 ", precio=" + precio +
                 ", cantidad=" + cantidad +
-                ", descripcion='" + descripcion + '\'' +
-                ", idCategoria=" + idCategoria +
-                ", idProveedor=" + idProveedor +
                 ", iva=" + iva +
                 ", retencion=" + retencion +
+                ", cantidad minima='" + cantidad_minima + '\'' +
+                ", idCategoria=" + idCategoria +
                 '}';
     }
 

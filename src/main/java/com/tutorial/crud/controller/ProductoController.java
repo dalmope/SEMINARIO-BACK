@@ -58,11 +58,11 @@ public class ProductoController {
         if(productoService.existsByNombre(productoDto.getNombre()))
             return new ResponseEntity(new Mensaje("ese nombre ya existe"), HttpStatus.BAD_REQUEST);
         Producto producto = new Producto(productoDto.getNombre(), productoDto.getPrecio(), productoDto.getCantidad());
-        producto.setRetencion(productoDto.getRetencion());
-        producto.setDescripcion(productoDto.getDescripcion());
         producto.setIva(productoDto.getIva());
+        producto.setRetencion(productoDto.getRetencion());
+        producto.setCantidad_minima(productoDto.getCantidad_minima());
         producto.setIdCategoria(productoDto.getIdCategoria());
-        producto.setIdProveedor(productoDto.getIdProveedor());
+        
         productoService.save(producto);
         return new ResponseEntity(new Mensaje("producto creado"), HttpStatus.OK);
     }

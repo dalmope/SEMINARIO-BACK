@@ -14,23 +14,22 @@ public class Producto {
     private String nombre;
     private float precio;
     private int cantidad;
-    private String descripcion;
-    private int idCategoria;
-    private int idProveedor;
     private Double iva;
     private Double retencion;
+    private int cantidad_minima;
+    private int idCategoria;
+  
 
     public Producto() {
     }
 
-    public Producto(String nombre, float precio, String descripcion, int idCategoria, int idProveedor, Double iva, Double retencion) {
+    public Producto(String nombre, float precio, int cantidad,Double iva, Double retencion, int cantidad_minima, int categoria) {
         this.nombre = nombre;
         this.precio = precio;
-        this.descripcion = descripcion;
-        this.idCategoria = idCategoria;
-        this.idProveedor = idProveedor;
         this.iva = iva;
         this.retencion = retencion;
+        this.cantidad_minima = cantidad_minima;
+        this.idCategoria = categoria;
     }
 
     public Producto(String nombre, float precio) {
@@ -68,28 +67,12 @@ public class Producto {
         this.precio = precio;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+      public int getCantidad() {
+        return cantidad;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public int getIdCategoria() {
-        return idCategoria;
-    }
-
-    public void setIdCategoria(int idCategoria) {
-        this.idCategoria = idCategoria;
-    }
-
-    public int getIdProveedor() {
-        return idProveedor;
-    }
-
-    public void setIdProveedor(int idProveedor) {
-        this.idProveedor = idProveedor;
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 
     public Double getIva() {
@@ -100,47 +83,58 @@ public class Producto {
         this.iva = iva;
     }
 
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
     public Double getRetencion() {
         return retencion;
     }
 
     public void setRetencion(Double retencion) {
         this.retencion = retencion;
+    }   
+
+      public int getCantidad_minima() {
+        return cantidad_minima;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Producto)) return false;
-        Producto producto = (Producto) o;
-        return id == producto.id && Float.compare(producto.precio, precio) == 0 && idCategoria == producto.idCategoria && idProveedor == producto.idProveedor && Objects.equals(nombre, producto.nombre) && Objects.equals(descripcion, producto.descripcion) && Objects.equals(iva, producto.iva) && Objects.equals(retencion, producto.retencion);
+    public void setCantidad_minima(int cantidad_minima) {
+        this.cantidad_minima = cantidad_minima;
     }
 
+    public int getIdCategoria() {
+        return idCategoria;
+    }
+
+    public void setIdCategoria(int idCategoria) {
+        this.idCategoria = idCategoria;
+    }
+
+    // public int getIdProveedor() {
+    //     return idProveedor;
+    // }
+
+    // public void setIdProveedor(int idProveedor) {
+    //     this.idProveedor = idProveedor;
+    // }
+
+    
+    
     @Override
     public String toString() {
         return "Producto{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", precio=" + precio +
-                ", descripcion='" + descripcion + '\'' +
-                ", idCategoria=" + idCategoria +
-                ", idProveedor=" + idProveedor +
+                ", cantidad='" + cantidad + '\'' +
                 ", iva=" + iva +
                 ", retencion=" + retencion +
+                ", cantidad minima=" + cantidad_minima +
+                ", categoria=" + idCategoria +
                 '}';
     }
+  
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nombre, precio, descripcion, idCategoria, idProveedor, iva, retencion);
+        return Objects.hash(id, nombre, precio, cantidad, iva, retencion, cantidad_minima, idCategoria);
     }
 
 
