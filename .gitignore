@@ -1,6 +1,7 @@
 target/
 src/main/resources/application.properties
 .settings/
+.vscode
 
 ### IntelliJ IDEA ###
 .idea
