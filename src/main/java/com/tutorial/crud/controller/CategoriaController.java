@@ -26,53 +26,55 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/categoria")
+@RequestMapping("/categorias")
 @CrossOrigin(origins = "*")
 public class CategoriaController {
     
     @Autowired
     CategoriaService categoriaService;
 
-    
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping
     public ResponseEntity<List<Categoria>> list(){
         List<Categoria> list = categoriaService.list();
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<?> create(@RequestBody CategoriaDto categoriaDto){
         if(StringUtils.isBlank(categoriaDto.getNombre()))
-            return new ResponseEntity(new Mensaje("el nombre es obligatorio"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new Mensaje("el nombre es obligatorio"), HttpStatus.BAD_REQUEST);
 
         if(categoriaService.existsByNombre(categoriaDto.getNombre()))
-            return new ResponseEntity(new Mensaje("ese nombre ya existe"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new Mensaje("ese nombre ya existe"), HttpStatus.BAD_REQUEST);
         Categoria categoria = new Categoria(categoriaDto.getNombre());
         categoriaService.save(categoria);
-        return new ResponseEntity(new Mensaje("categoria creada"), HttpStatus.OK);
+        return new ResponseEntity<>(new Mensaje("categoria creada"), HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable("id")int id, @RequestBody CategoriaDto categoriaDto){
         if(!categoriaService.existsById(id))
-            return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
         if(categoriaService.existsByNombre(categoriaDto.getNombre()) && categoriaService.getByNombre(categoriaDto.getNombre()).get().getId() != id)
-            return new ResponseEntity(new Mensaje("ese nombre ya existe"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new Mensaje("ese nombre ya existe"), HttpStatus.BAD_REQUEST);
         if(StringUtils.isBlank(categoriaDto.getNombre()))
-            return new ResponseEntity(new Mensaje("el nombre es obligatorio"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new Mensaje("el nombre es obligatorio"), HttpStatus.BAD_REQUEST);
 
         Categoria categoria = categoriaService.getOne(id).get();
         categoria.setNombre(categoriaDto.getNombre());
-        return new ResponseEntity(new Mensaje("producto actualizado"), HttpStatus.OK);
+        return new ResponseEntity<>(new Mensaje("producto actualizado"), HttpStatus.OK);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable("id")int id){
         if(!categoriaService.existsById(id))
-            return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
         categoriaService.delete(id);
-        return new ResponseEntity(new Mensaje("producto eliminado"), HttpStatus.OK);
+        return new ResponseEntity<>(new Mensaje("producto eliminado"), HttpStatus.OK);
     }
 
 }

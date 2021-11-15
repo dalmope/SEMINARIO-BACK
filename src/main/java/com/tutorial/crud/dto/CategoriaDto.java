@@ -1,6 +1,5 @@
 package com.tutorial.crud.dto;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
 public class CategoriaDto {
