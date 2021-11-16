@@ -69,7 +69,8 @@ public class JwtProvider {
             JWT jwt = JWTParser.parse(jwtDto.getToken());
             JWTClaimsSet claims = jwt.getJWTClaimsSet();
             String nombreUsuario = claims.getSubject();
-            List<String> roles = (List<String>) claims.getClaim("roles");
+            List<String> roles = claims.getStringListClaim("roles");
+            //List<String> roles = (List<String>) claims.getClaim("roles");
 
             return Jwts.builder()
                     .setSubject(nombreUsuario)
