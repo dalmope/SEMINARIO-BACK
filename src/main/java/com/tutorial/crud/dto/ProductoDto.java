@@ -13,19 +13,19 @@ public class ProductoDto {
     private Double iva;
     private Double retencion;
     private int cantidad_minima;
-    private int idCategoria;
+    private int categoria;
 
     public ProductoDto() {
     }
 
-    public ProductoDto(@NotBlank String nombre,  Float precio, int cantidad, Double iva, Double retencion, int cantidadMinima, int idCategoria) {
+    public ProductoDto(@NotBlank String nombre,  Float precio, int cantidad, Double iva, Double retencion, int cantidadMinima, int categoria) {
         this.nombre = nombre;
         this.precio = precio;
         this.cantidad = cantidad;
         this.iva = iva;
         this.retencion = retencion;
         this.cantidad_minima = cantidadMinima;
-        this.idCategoria = idCategoria;
+        this.categoria = categoria;
     
     }
 
@@ -88,15 +88,13 @@ public class ProductoDto {
         this.cantidad_minima = cantidad_minima;
     }
 
-    public int getIdCategoria() {
-        return idCategoria;
+    public int getCategoria() {
+        return categoria;
     }
 
-    public void setIdCategoria(int idCategoria) {
-        this.idCategoria = idCategoria;
-    }
-
-  
+    public void setCategoria(int categoria) {
+        this.categoria = categoria;
+    } 
 
     @Override
     public String toString() {
@@ -107,7 +105,7 @@ public class ProductoDto {
                 ", iva=" + iva +
                 ", retencion=" + retencion +
                 ", cantidad minima='" + cantidad_minima + '\'' +
-                ", idCategoria=" + idCategoria +
+                ", idCategoria=" + categoria +
                 '}';
     }
 

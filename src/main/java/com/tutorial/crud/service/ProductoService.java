@@ -43,4 +43,8 @@ public class ProductoService {
     public boolean existsByNombre(String nombre){
         return productoRepository.existsByNombre(nombre);
     }
+
+    public List<Producto> findById_categoria(int id_categoria){
+        return productoRepository.findByCategoria(id_categoria);
+    }
 }

@@ -63,7 +63,7 @@ public class ProductoController {
         producto.setIva(productoDto.getIva());
         producto.setRetencion(productoDto.getRetencion());
         producto.setCantidad_minima(productoDto.getCantidad_minima());
-        producto.setIdCategoria(productoDto.getIdCategoria());
+        producto.setCategoria(productoDto.getCategoria());
         
         productoService.save(producto);
         return new ResponseEntity<>(new Mensaje("producto creado"), HttpStatus.OK);
@@ -97,5 +97,10 @@ public class ProductoController {
         return new ResponseEntity<>(new Mensaje("producto eliminado"), HttpStatus.OK);
     }
 
+    @GetMapping("/categoria/{id}")
+    public ResponseEntity<?> findById_categoria(@PathVariable("id")int id){
+        List<Producto> list = productoService.findById_categoria(id);
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
 
 }

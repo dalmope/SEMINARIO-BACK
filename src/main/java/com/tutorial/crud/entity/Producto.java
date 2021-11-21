@@ -17,7 +17,7 @@ public class Producto {
     private Double iva;
     private Double retencion;
     private int cantidad_minima;
-    private int idCategoria;
+    private int categoria;
   
 
     public Producto() {
@@ -29,7 +29,7 @@ public class Producto {
         this.iva = iva;
         this.retencion = retencion;
         this.cantidad_minima = cantidad_minima;
-        this.idCategoria = categoria;
+        this.categoria = categoria;
     }
 
     public Producto(String nombre, float precio) {
@@ -99,12 +99,12 @@ public class Producto {
         this.cantidad_minima = cantidad_minima;
     }
 
-    public int getIdCategoria() {
-        return idCategoria;
+    public int getCategoria() {
+        return categoria;
     }
 
-    public void setIdCategoria(int idCategoria) {
-        this.idCategoria = idCategoria;
+    public void setCategoria(int categoria) {
+        this.categoria = categoria;
     }
 
     // public int getIdProveedor() {
@@ -127,14 +127,14 @@ public class Producto {
                 ", iva=" + iva +
                 ", retencion=" + retencion +
                 ", cantidad minima=" + cantidad_minima +
-                ", categoria=" + idCategoria +
+                ", categoria=" + categoria +
                 '}';
     }
   
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nombre, precio, cantidad, iva, retencion, cantidad_minima, idCategoria);
+        return Objects.hash(id, nombre, precio, cantidad, iva, retencion, cantidad_minima, categoria);
     }
 
 
