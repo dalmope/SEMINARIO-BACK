@@ -33,11 +33,16 @@ public class CategoriaController {
     @Autowired
     CategoriaService categoriaService;
 
-    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping
     public ResponseEntity<List<Categoria>> list(){
         List<Categoria> list = categoriaService.list();
         return new ResponseEntity<>(list, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Categoria> get(@PathVariable("id") int id){
+        Categoria categoria = categoriaService.getOne(id).get();
+        return new ResponseEntity<>(categoria, HttpStatus.OK);
     }
     
     @PreAuthorize("hasRole('ADMIN')")
@@ -45,7 +50,6 @@ public class CategoriaController {
     public ResponseEntity<?> create(@RequestBody CategoriaDto categoriaDto){
         if(StringUtils.isBlank(categoriaDto.getNombre()))
             return new ResponseEntity<>(new Mensaje("el nombre es obligatorio"), HttpStatus.BAD_REQUEST);
-
         if(categoriaService.existsByNombre(categoriaDto.getNombre()))
             return new ResponseEntity<>(new Mensaje("ese nombre ya existe"), HttpStatus.BAD_REQUEST);
         Categoria categoria = new Categoria(categoriaDto.getNombre());
