@@ -11,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.List;
 
@@ -30,7 +29,7 @@ public class ProductoController {
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
-    @ApiIgnore
+    @ApiOperation("Devuelve un producto por ID")
     @GetMapping("/{id}")
     public ResponseEntity<?> getById(@PathVariable("id") int id){
         if(!productoService.existsById(id)){
@@ -40,16 +39,16 @@ public class ProductoController {
         return new ResponseEntity<>(producto, HttpStatus.OK);
     }
 
-    @ApiIgnore
+    @ApiOperation("Devuelve un producto por nombre")
     @GetMapping("/nombre/{nombre}")
     public ResponseEntity<?> getByNombre(@PathVariable("nombre") String nombre){
         if(!productoService.existsByNombre(nombre))
             return new ResponseEntity<>(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
         Producto producto = productoService.getByNombre(nombre).get();
         return new ResponseEntity<>(producto, HttpStatus.OK);
-        //@PathVariable("nombre") String nombre
     }
 
+    @ApiOperation("Guarda un producto")
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<?> create(@RequestBody ProductoDto productoDto){
@@ -69,6 +68,7 @@ public class ProductoController {
         return new ResponseEntity<>(new Mensaje("producto creado"), HttpStatus.OK);
     }
 
+    @ApiOperation("Actualiza un producto")
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable("id")int id, @RequestBody ProductoDto productoDto){
@@ -88,6 +88,7 @@ public class ProductoController {
         return new ResponseEntity<>(new Mensaje("producto actualizado"), HttpStatus.OK);
     }
 
+    @ApiOperation("Elimina un producto")
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable("id")int id){
@@ -97,6 +98,7 @@ public class ProductoController {
         return new ResponseEntity<>(new Mensaje("producto eliminado"), HttpStatus.OK);
     }
 
+    @ApiOperation("Muestra una lista de productos por categoria")
     @GetMapping("/categoria/{id}")
     public ResponseEntity<?> findById_categoria(@PathVariable("id")int id){
         List<Producto> list = productoService.findById_categoria(id);
