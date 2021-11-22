@@ -2,6 +2,7 @@ package com.tutorial.crud.security.controller;
 
 import java.util.List;
 
+import com.tutorial.crud.security.dto.NuevoUsuario;
 import com.tutorial.crud.security.entity.Usuario;
 import com.tutorial.crud.security.service.UsuarioService;
 
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -40,11 +43,22 @@ public class UsuarioController {
         return new ResponseEntity<>(usuario, HttpStatus.OK);
     }
 
-    @ApiOperation("Boora un usuario por ID")
+    @ApiOperation("Borra un usuario por ID")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id")int id){
         usuarioService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @ApiOperation("Actualiza un usuario")
+    @PutMapping("/{id}")
+    public ResponseEntity<Usuario> update(@PathVariable("id")int id, @RequestBody NuevoUsuario usuarioDTO){
+        Usuario usuario = usuarioService.getById(id).get();
+        usuario.setNombre(usuarioDTO.getNombre());
+        usuario.setNombreUsuario(usuarioDTO.getNombreUsuario());
+        usuario.setEmail(usuarioDTO.getEmail());
+        usuarioService.save(usuario);
+        return new ResponseEntity<>(usuario, HttpStatus.OK);
     }
 
 }
