@@ -3,7 +3,7 @@ package com.tutorial.crud.security.jwt;
 import com.nimbusds.jwt.JWT;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.JWTParser;
-//import com.tutorial.crud.security.dto.JwtDto;
+import com.tutorial.crud.security.dto.JwtDto;
 import com.tutorial.crud.security.entity.UsuarioPrincipal;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
