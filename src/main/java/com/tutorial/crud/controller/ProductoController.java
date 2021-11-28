@@ -84,13 +84,7 @@ public class ProductoController {
         Producto producto = productoService.getOne(id).get();
         producto.setNombre(productoDto.getNombre());
         producto.setPrecio(productoDto.getPrecio());
-        producto.setCantidad(productoDto.getCantidad());
-        producto.setIva(productoDto.getIva());
-        producto.setRetencion(productoDto.getRetencion());
-        producto.setCantidad_minima(productoDto.getCantidad_minima());
-        producto.setCategoria(productoDto.getCategoria());
         productoService.save(producto);
-
         return new ResponseEntity<>(new Mensaje("producto actualizado"), HttpStatus.OK);
     }
 
