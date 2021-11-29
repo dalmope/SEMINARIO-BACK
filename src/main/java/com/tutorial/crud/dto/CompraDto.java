@@ -5,7 +5,6 @@ import javax.validation.constraints.NotBlank;
 public class CompraDto {
     @NotBlank
     private String numeroFactura;
-
     private int cantidad;
     private String proveedor;
     private int usuario;

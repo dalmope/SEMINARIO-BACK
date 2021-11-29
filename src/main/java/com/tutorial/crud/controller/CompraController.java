@@ -99,11 +99,4 @@ public class CompraController {
         return new ResponseEntity<>(new Mensaje("Compra eliminada"), HttpStatus.OK);
     }
 
-    // @ApiOperation("Muestra una lista de compras por categoria")
-    // @GetMapping("/categoria/{id}")
-    // public ResponseEntity<?> findById_categoria(@PathVariable("id")int id){
-    //     List<Producto> list = productoService.findById_categoria(id);
-    //     return new ResponseEntity<>(list, HttpStatus.OK);
-    // }
-
 }
