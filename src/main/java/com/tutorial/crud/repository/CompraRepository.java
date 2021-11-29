@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CompraRepository extends JpaRepository<Compra, Integer>{
-    java.util.Optional<Compra> findByNombre(String numeroFactura);
-    boolean existsByNombre(String numeroFactura);
+    java.util.Optional<Compra> findBynumeroFactura(String numeroFactura);
+    boolean existsBynumeroFactura(String numeroFactura);
 }

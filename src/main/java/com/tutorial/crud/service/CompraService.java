@@ -28,7 +28,7 @@ public class CompraService {
     }
 
     public Optional<Compra> getByNombre(String numeroFactura){
-        return compraRepository.findByNombre(numeroFactura);
+        return compraRepository.findBynumeroFactura(numeroFactura);
     }
 
     public void  save(Compra compra){
@@ -44,6 +44,6 @@ public class CompraService {
     }
 
     public boolean existsByNombre(String nombre){
-        return compraRepository.existsByNombre(nombre);
+        return compraRepository.existsBynumeroFactura(nombre);
     }
 }
