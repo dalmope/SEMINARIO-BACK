@@ -38,6 +38,10 @@ public class ProveedorService {
         proveedorRepository.deleteById(id);
     }
 
+    public void update(Proveedor proveedor){
+        proveedorRepository.save(proveedor);
+    }
+
     public boolean existsById(int id){
         return proveedorRepository.existsById(id);
     }
