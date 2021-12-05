@@ -61,7 +61,7 @@ public class ProveedorController {
         Proveedor proveedor = proveedorService.getOne(id).get();
         proveedor.setNombre(proveedorDto.getNombre());
         proveedorService.save(proveedor);
-        return new ResponseEntity<>(new Mensaje("producto actualizado"), HttpStatus.OK);
+        return new ResponseEntity<>(new Mensaje("Proveedor actualizado"), HttpStatus.OK);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
