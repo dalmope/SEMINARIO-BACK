@@ -66,7 +66,7 @@ public class CompraController {
             return new ResponseEntity<>(new Mensaje("el numeor de factura es obligatorio"), HttpStatus.BAD_REQUEST);
         if(compraService.existsByNombre(compraDto.getNumeroFactura()))
             return new ResponseEntity<>(new Mensaje("ese numero de factura ya existe"), HttpStatus.BAD_REQUEST);
-        Compra compra = new Compra (compraDto.getNumeroFactura(), compraDto.getCantidad(), compraDto.getProveedor(), compraDto.getUsuario(), compraDto.getProducto(), compraDto.getEstado());
+        Compra compra = new Compra (compraDto.getNumeroFactura(), compraDto.getCantidad(), compraDto.getProveedor(), compraDto.getUsuario(), compraDto.getProductos(), compraDto.getEstado());
         
         compraService.save(compra);
         return new ResponseEntity<>(new Mensaje("Compra creada"), HttpStatus.OK);

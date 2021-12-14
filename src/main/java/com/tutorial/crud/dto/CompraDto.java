@@ -65,11 +65,11 @@ public class CompraDto {
         this.usuario = usuario;
     }
 
-    public Set<Producto> getProducto() {
+    public Set<Producto> getProductos() {
         return productos;
     }
 
-    public void setProducto(Set<Producto> productos) {
+    public void setProductos(Set<Producto> productos) {
         this.productos = productos;
     }
 
