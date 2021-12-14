@@ -5,6 +5,7 @@ package com.tutorial.crud.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.fasterxml.jackson.databind.ser.std.StdArraySerializers.BooleanArraySerializer;
 import com.tutorial.crud.entity.Compra;
 import com.tutorial.crud.repository.CompraRepository;
 
@@ -35,8 +36,15 @@ public class CompraService {
         compraRepository.save(compra);
     }
 
-    public void delete(int id){
-        compraRepository.deleteById(id);
+    public Boolean delete(int id){
+        return this.changeStatus(id, false);
+    }
+
+    public Boolean changeStatus(int id, boolean status){
+        Compra compra = compraRepository.getOne(id);
+        compra.setEstado(status);
+        compraRepository.save(compra);
+        return compra.getEstado();
     }
 
     public boolean existsById(int id){

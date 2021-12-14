@@ -20,6 +20,14 @@ public class UsuarioService {
         return usuarioRepository.findAll();
     }
 
+    public Optional<List<Usuario>> getByEstado() {
+        return usuarioRepository.findByEstado(true);
+    }
+
+    public List<Usuario> listarActivos() {
+        return usuarioRepository.findByEstado(true).get();
+    }
+
     public Optional<Usuario> getByNombreUsuario(String nombreUsuario){
         return usuarioRepository.findByNombreUsuario(nombreUsuario);
     }
@@ -40,6 +48,13 @@ public class UsuarioService {
         return usuarioRepository.existsByEmail(email);
     }
 
+    public Boolean changeStatus(int id, boolean status){
+        Usuario usuario = usuarioRepository.getOne(id);
+        usuario.setEstado(status);
+        usuarioRepository.save(usuario);
+        return usuario.getEstado();
+    }
+
     public void save(Usuario usuario){
         usuarioRepository.save(usuario);
     }
@@ -50,6 +65,10 @@ public class UsuarioService {
 
     public Optional<Usuario> getById(int id){
         return usuarioRepository.findById(id);
+    }
+
+    public boolean existsById(int id){
+        return usuarioRepository.existsById(id);
     }
 
 }

@@ -1,6 +1,10 @@
 package com.tutorial.crud.dto;
 
+import java.util.Set;
+
 import javax.validation.constraints.NotBlank;
+
+import com.tutorial.crud.entity.Producto;
 
 public class CompraDto {
     @NotBlank
@@ -8,19 +12,19 @@ public class CompraDto {
     private int cantidad;
     private String proveedor;
     private int usuario;
-    private int producto;
+    private Set<Producto> productos;
     private Boolean estado;
 
 
      public CompraDto() {
     }
 
-    public CompraDto(@NotBlank String numeroFactura, int cantidad, String proveedor, int usuario, int producto, Boolean estado) {
+    public CompraDto(@NotBlank String numeroFactura, int cantidad, String proveedor, int usuario, Set<Producto> productos, Boolean estado) {
         this.numeroFactura = numeroFactura;
         this.cantidad = cantidad;
         this.proveedor = proveedor;
         this.usuario = usuario;
-        this.producto = producto;
+        this.productos = productos;
         this.estado = estado;
     }
 
@@ -61,12 +65,12 @@ public class CompraDto {
         this.usuario = usuario;
     }
 
-    public int getProducto() {
-        return producto;
+    public Set<Producto> getProducto() {
+        return productos;
     }
 
-    public void setProducto(int producto) {
-        this.producto = producto;
+    public void setProducto(Set<Producto> productos) {
+        this.productos = productos;
     }
 
     public Boolean getEstado() {
@@ -77,6 +81,5 @@ public class CompraDto {
         this.estado = estado;
     }
 
-     
 
 }

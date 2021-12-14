@@ -1,13 +1,21 @@
 package com.tutorial.crud.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Compra {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -15,19 +23,23 @@ public class Compra {
     private int cantidad;
     private String proveedor;
     private int usuario;
-    private int producto;
+    @NotNull
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "compra_productos", joinColumns = @JoinColumn(name = "compra_id"), inverseJoinColumns = @JoinColumn(name = "producto_id"))
+    private Set<Producto> productos = new HashSet<>();
     private Boolean estado;
-  
-    public Compra(){
+
+    public Compra() {
 
     }
 
-    public Compra(String numeroFactura, int cantidad, String proveedor, int usuario, int producto, Boolean estado){
+    public Compra(String numeroFactura, int cantidad, String proveedor, int usuario, Set<Producto> productos,
+            Boolean estado) {
         this.numeroFactura = numeroFactura;
         this.cantidad = cantidad;
         this.proveedor = proveedor;
         this.usuario = usuario;
-        this.producto = producto;
+        this.productos = productos;
         this.estado = estado;
     }
 
@@ -71,15 +83,15 @@ public class Compra {
         this.usuario = usuario;
     }
 
-    public int getProducto() {
-        return producto;
+    public Set<Producto>  getProductos() {
+        return productos;
     }
 
-    public void setProducto(int producto) {
-        this.producto = producto;
+    public void setProductos(Set<Producto> productos) {
+        this.productos = productos;
     }
 
-        public Boolean getEstado() {
+    public Boolean getEstado() {
         return estado;
     }
 
@@ -90,8 +102,7 @@ public class Compra {
     @Override
     public String toString() {
         return "Compra [cantidad=" + cantidad + ", id=" + id + ", numeroFactura=" + numeroFactura + ", producto="
-                + producto + ", proveedor=" + proveedor + ", usuario=" + usuario + "]";
+                + productos + ", proveedor=" + proveedor + ", usuario=" + usuario + "]";
     }
 
-    
 }

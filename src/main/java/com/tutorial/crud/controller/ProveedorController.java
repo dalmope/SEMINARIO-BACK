@@ -14,6 +14,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import io.swagger.annotations.ApiOperation;
+
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -24,18 +27,35 @@ public class ProveedorController {
      @Autowired
     ProveedorService proveedorService;
 
+    @ApiOperation("Devuelve una lista de Proveedores")
     @GetMapping
     public ResponseEntity<List<Proveedor>> list(){
         List<Proveedor> list = proveedorService.list();
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
+    @ApiOperation("Devuelve una lista de Proveedores activos")
+    @GetMapping("/activos")
+    public ResponseEntity<List<Proveedor>> listActivos(){
+        List<Proveedor> list = proveedorService.getActivos();
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
+
+    @ApiOperation("Activa un Proveedor por su ID")
+    @PutMapping("/activar/{id}")
+    public ResponseEntity<Mensaje> activar(@PathVariable("id") int id){
+        proveedorService.changeStatus(id, true);
+        return new ResponseEntity<>(new Mensaje("Proveedor activado"), HttpStatus.OK);
+    }
+
+    @ApiOperation("Devuelve un proveedor por su ID")
     @GetMapping("/{id}")
     public ResponseEntity<Proveedor> get(@PathVariable("id") int id){
         Proveedor proveedor = proveedorService.getOne(id).get();
         return new ResponseEntity<>(proveedor, HttpStatus.OK);
     }
     
+    @ApiOperation("Crea un proveedor")
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<?> create(@RequestBody ProveedorDto proveedorDto){
@@ -48,6 +68,7 @@ public class ProveedorController {
         return new ResponseEntity<>(new Mensaje("Proveedor creado"), HttpStatus.OK);
     }
 
+    @ApiOperation("Actualiza un proveedor")
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable("id")int id, @RequestBody ProveedorDto proveedorDto){
@@ -65,12 +86,13 @@ public class ProveedorController {
         return new ResponseEntity<>(new Mensaje("Proveedor actualizado"), HttpStatus.OK);
     }
 
+    @ApiOperation("Elimina un proveedor, cambiando su estado a false")
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable("id")int id){
         if(!proveedorService.existsById(id))
             return new ResponseEntity<>(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
-        proveedorService.delete(id);
-        return new ResponseEntity<>(new Mensaje("producto eliminado"), HttpStatus.OK);
+        Boolean estado = proveedorService.delete(id);
+        return new ResponseEntity<>(new Mensaje("Proveedor eliminado, estado: " + estado ), HttpStatus.OK);
     }
 }

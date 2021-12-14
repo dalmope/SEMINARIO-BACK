@@ -21,6 +21,10 @@ public class CategoriaService {
         return categoriaRepository.findAll();
     }
 
+    public List<Categoria> getActivos(){
+        return categoriaRepository.findByEstado(true).get();
+    }
+
     public Optional<Categoria> getOne(int id){
         return categoriaRepository.findById(id);
     }
@@ -33,8 +37,15 @@ public class CategoriaService {
         categoriaRepository.save(categoria);
     }
 
-    public void delete(int id){
-        categoriaRepository.deleteById(id);
+    public Boolean delete(int id){
+        return this.changeStatus(id, false);
+    }
+
+    public Boolean changeStatus(int id, boolean status){
+        Categoria categoria = categoriaRepository.getOne(id);
+        categoria.setEstado(status);
+        categoriaRepository.save(categoria);
+        return categoria.getEstado();
     }
 
     public boolean existsById(int id){

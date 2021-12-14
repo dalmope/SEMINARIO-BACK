@@ -16,35 +16,46 @@ public class ProductoService {
     @Autowired
     ProductoRepository productoRepository;
 
-    public List<Producto> list(){
+    public List<Producto> list() {
         return productoRepository.findAll();
     }
 
-    public Optional<Producto> getOne(int id){
+    public Optional<Producto> getOne(int id) {
         return productoRepository.findById(id);
     }
 
-    public Optional<Producto> getByNombre(String nombre){
+    public Optional<Producto> getByNombre(String nombre) {
         return productoRepository.findByNombre(nombre);
     }
 
-    public void  save(Producto producto){
+    public void save(Producto producto) {
         productoRepository.save(producto);
     }
 
-    public void delete(int id){
-        productoRepository.deleteById(id);
+    public List<Producto> getActivos() {
+        return productoRepository.findByEstado(true).get();
     }
 
-    public boolean existsById(int id){
+    public Boolean delete(int id) {
+        return this.changeStatus(id, false);
+    }
+
+    public boolean existsById(int id) {
         return productoRepository.existsById(id);
     }
 
-    public boolean existsByNombre(String nombre){
+    public boolean existsByNombre(String nombre) {
         return productoRepository.existsByNombre(nombre);
     }
 
-    public List<Producto> findById_categoria(int id_categoria){
+    public List<Producto> findById_categoria(int id_categoria) {
         return productoRepository.findByCategoria(id_categoria);
+    }
+
+    public Boolean changeStatus(int id, boolean status) {
+        Producto producto = productoRepository.getOne(id);
+        producto.setEstado(status);
+        productoRepository.save(producto);
+        return producto.getEstado();
     }
 }

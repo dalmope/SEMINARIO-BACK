@@ -29,6 +29,23 @@ public class ProductoController {
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
+    @ApiOperation("Muestra una lista de productos activos")
+    @GetMapping("/activos")
+    public ResponseEntity<List<Producto>> listActivos(){
+        List<Producto> list = productoService.getActivos();
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
+
+    @ApiOperation("Activa un producto")
+    @PutMapping("/activar/{id}")
+    public ResponseEntity<Mensaje> activar(@PathVariable("id") int id){
+        if(!productoService.existsById(id)){
+            return new ResponseEntity<>(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
+        }
+        productoService.changeStatus(id, true);
+        return new ResponseEntity<>(new Mensaje("Producto activado"), HttpStatus.OK);
+    }
+
     @ApiOperation("Devuelve un producto por ID")
     @GetMapping("/{id}")
     public ResponseEntity<?> getById(@PathVariable("id") int id){
@@ -95,8 +112,8 @@ public class ProductoController {
     public ResponseEntity<?> delete(@PathVariable("id")int id){
         if(!productoService.existsById(id))
             return new ResponseEntity<>(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
-        productoService.delete(id);
-        return new ResponseEntity<>(new Mensaje("producto eliminado"), HttpStatus.OK);
+        Boolean estado = productoService.delete(id);
+        return new ResponseEntity<>(new Mensaje("producto eliminado, estado: " + estado), HttpStatus.OK);
     }
 
     @ApiOperation("Muestra una lista de productos por categoria")

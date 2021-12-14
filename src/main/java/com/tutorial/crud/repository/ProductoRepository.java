@@ -12,4 +12,5 @@ public interface ProductoRepository extends JpaRepository<Producto, Integer> {
     Optional<Producto> findByNombre(String nombre);
     boolean existsByNombre(String nombre);
     List<Producto> findByCategoria(int categoria);
+    Optional<List<Producto>> findByEstado(boolean b);
 }

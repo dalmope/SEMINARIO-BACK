@@ -22,6 +22,10 @@ public class ProveedorService {
         return proveedorRepository.findAll();
     }
 
+    public List<Proveedor> getActivos(){
+        return proveedorRepository.findByEstado(true).get();
+    }
+
     public Optional<Proveedor> getOne(int id){
         return proveedorRepository.findById(id);
     }
@@ -34,8 +38,15 @@ public class ProveedorService {
         proveedorRepository.save(categoria);
     }
 
-    public void delete(int id){
-        proveedorRepository.deleteById(id);
+    public Boolean delete(int id){
+       return this.changeStatus(id, false);
+    }
+
+    public Boolean changeStatus(int id, boolean status){
+        Proveedor proveedor = proveedorRepository.getOne(id);
+        proveedor.setEstado(status);
+        proveedorRepository.save(proveedor);
+        return proveedor.getEstado();
     }
 
     public void update(Proveedor proveedor){

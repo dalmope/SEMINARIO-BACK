@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.tutorial.crud.security.dto.NuevoUsuario;
 import com.tutorial.crud.security.entity.Usuario;
+import com.tutorial.crud.security.repository.UsuarioRepository;
 import com.tutorial.crud.security.service.UsuarioService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,13 @@ public class UsuarioController {
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
+    @ApiOperation("Devuelve los usarios activos")
+    @GetMapping("/activos")
+    public ResponseEntity<List<Usuario>> listActivos(){
+        List<Usuario> list = usuarioService.listarActivos();
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
+
     @ApiOperation("Muestra un usuario")
     @GetMapping("/{id}")
     public ResponseEntity<Usuario> get(@PathVariable("id")int id){
@@ -61,5 +69,7 @@ public class UsuarioController {
         usuarioService.save(usuario);
         return new ResponseEntity<>(usuario, HttpStatus.OK);
     }
+
+
 
 }
