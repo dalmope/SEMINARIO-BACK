@@ -18,18 +18,21 @@ public class Producto {
     private Double retencion;
     private int cantidad_minima;
     private int categoria;
+    private Boolean estado;
+
   
 
     public Producto() {
     }
 
-    public Producto(String nombre, float precio, int cantidad,Double iva, Double retencion, int cantidad_minima, int categoria) {
+    public Producto(String nombre, float precio, int cantidad,Double iva, Double retencion, int cantidad_minima, int categoria, Boolean estado) {
         this.nombre = nombre;
         this.precio = precio;
         this.iva = iva;
         this.retencion = retencion;
         this.cantidad_minima = cantidad_minima;
         this.categoria = categoria;
+        this.estado = estado;
     }
 
     public Producto(String nombre, float precio) {
@@ -107,6 +110,8 @@ public class Producto {
         this.categoria = categoria;
     }
 
+    
+
     // public int getIdProveedor() {
     //     return idProveedor;
     // }
@@ -117,6 +122,14 @@ public class Producto {
 
     
     
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
+    }
+
     @Override
     public String toString() {
         return "Producto{" +

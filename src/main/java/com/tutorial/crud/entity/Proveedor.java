@@ -13,12 +13,15 @@ public class Proveedor {
     private int id;
     private String nombre;
 
+    private Boolean estado;
+
     public Proveedor(){
 
     }
 
-    public Proveedor(String nombre){
+    public Proveedor(String nombre, Boolean estado){
         this.nombre = nombre;
+        this.estado = estado;
     }
 
     public int getId() {
@@ -35,6 +38,14 @@ public class Proveedor {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
     }
 
     

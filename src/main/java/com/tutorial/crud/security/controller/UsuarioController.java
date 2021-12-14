@@ -57,6 +57,7 @@ public class UsuarioController {
         usuario.setNombre(usuarioDTO.getNombre());
         usuario.setNombreUsuario(usuarioDTO.getNombreUsuario());
         usuario.setEmail(usuarioDTO.getEmail());
+        usuario.setEstado(usuarioDTO.getEstado());
         usuarioService.save(usuario);
         return new ResponseEntity<>(usuario, HttpStatus.OK);
     }

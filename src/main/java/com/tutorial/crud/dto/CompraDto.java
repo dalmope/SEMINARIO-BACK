@@ -9,17 +9,19 @@ public class CompraDto {
     private String proveedor;
     private int usuario;
     private int producto;
+    private Boolean estado;
 
 
      public CompraDto() {
     }
 
-    public CompraDto(@NotBlank String numeroFactura, int cantidad, String proveedor, int usuario, int producto) {
+    public CompraDto(@NotBlank String numeroFactura, int cantidad, String proveedor, int usuario, int producto, Boolean estado) {
         this.numeroFactura = numeroFactura;
         this.cantidad = cantidad;
         this.proveedor = proveedor;
         this.usuario = usuario;
         this.producto = producto;
+        this.estado = estado;
     }
 
      public CompraDto(@NotBlank String numeroFactura, int cantidad) {
@@ -65,6 +67,14 @@ public class CompraDto {
 
     public void setProducto(int producto) {
         this.producto = producto;
+    }
+
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
     }
 
      

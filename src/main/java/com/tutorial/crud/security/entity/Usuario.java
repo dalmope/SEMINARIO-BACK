@@ -20,6 +20,9 @@ public class Usuario {
     @NotNull
     private String password;
     private String tokenPassword;
+
+    private Boolean estado;
+
     @NotNull
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id"),
@@ -29,11 +32,12 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(@NotNull String nombre, @NotNull String nombreUsuario, @NotNull String email, @NotNull String password) {
+    public Usuario(@NotNull String nombre, @NotNull String nombreUsuario, @NotNull String email, @NotNull String password, Boolean estado) {
         this.nombre = nombre;
         this.nombreUsuario = nombreUsuario;
         this.email = email;
         this.password = password;
+        this.estado = estado;
     }
 
     public int getId() {
@@ -82,6 +86,15 @@ public class Usuario {
 
     public void setTokenPassword(String tokenPassword) {
         this.tokenPassword = tokenPassword;
+    }
+
+    
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
     }
 
     public Set<Rol> getRoles() {

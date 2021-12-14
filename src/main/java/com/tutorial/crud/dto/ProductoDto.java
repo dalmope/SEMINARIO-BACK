@@ -14,11 +14,12 @@ public class ProductoDto {
     private Double retencion;
     private int cantidad_minima;
     private int categoria;
+    private Boolean estado;
 
     public ProductoDto() {
     }
 
-    public ProductoDto(@NotBlank String nombre,  Float precio, int cantidad, Double iva, Double retencion, int cantidadMinima, int categoria) {
+    public ProductoDto(@NotBlank String nombre,  Float precio, int cantidad, Double iva, Double retencion, int cantidadMinima, int categoria, Boolean estado) {
         this.nombre = nombre;
         this.precio = precio;
         this.cantidad = cantidad;
@@ -26,7 +27,7 @@ public class ProductoDto {
         this.retencion = retencion;
         this.cantidad_minima = cantidadMinima;
         this.categoria = categoria;
-    
+        this.estado = estado;
     }
 
     public ProductoDto(@NotBlank String nombre, @Min(0) Float precio) {
@@ -95,6 +96,16 @@ public class ProductoDto {
     public void setCategoria(int categoria) {
         this.categoria = categoria;
     } 
+
+    
+
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
+    }
 
     @Override
     public String toString() {

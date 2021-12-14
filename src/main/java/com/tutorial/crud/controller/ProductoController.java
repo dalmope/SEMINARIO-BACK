@@ -63,7 +63,7 @@ public class ProductoController {
         producto.setRetencion(productoDto.getRetencion());
         producto.setCantidad_minima(productoDto.getCantidad_minima());
         producto.setCategoria(productoDto.getCategoria());
-        
+        producto.setEstado(productoDto.getEstado());
         productoService.save(producto);
         return new ResponseEntity<>(new Mensaje("producto creado"), HttpStatus.OK);
     }
@@ -84,6 +84,7 @@ public class ProductoController {
         Producto producto = productoService.getOne(id).get();
         producto.setNombre(productoDto.getNombre());
         producto.setPrecio(productoDto.getPrecio());
+        producto.setEstado(productoDto.getEstado());
         productoService.save(producto);
         return new ResponseEntity<>(new Mensaje("producto actualizado"), HttpStatus.OK);
     }

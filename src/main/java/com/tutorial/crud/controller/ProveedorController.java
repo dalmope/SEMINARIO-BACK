@@ -43,7 +43,7 @@ public class ProveedorController {
             return new ResponseEntity<>(new Mensaje("el nombre es obligatorio"), HttpStatus.BAD_REQUEST);
         if(proveedorService.existsByNombre(proveedorDto.getNombre()))
             return new ResponseEntity<>(new Mensaje("ese nombre ya existe"), HttpStatus.BAD_REQUEST);
-        Proveedor proveedor = new Proveedor (proveedorDto.getNombre());
+        Proveedor proveedor = new Proveedor (proveedorDto.getNombre(), proveedorDto.getEstado());
         proveedorService.save(proveedor);
         return new ResponseEntity<>(new Mensaje("Proveedor creado"), HttpStatus.OK);
     }
@@ -60,6 +60,7 @@ public class ProveedorController {
 
         Proveedor proveedor = proveedorService.getOne(id).get();
         proveedor.setNombre(proveedorDto.getNombre());
+        proveedor.setEstado(proveedorDto.getEstado());
         proveedorService.save(proveedor);
         return new ResponseEntity<>(new Mensaje("Proveedor actualizado"), HttpStatus.OK);
     }
