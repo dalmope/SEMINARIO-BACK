@@ -1,11 +1,14 @@
 package com.tutorial.crud.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import com.tutorial.crud.dto.CompraDto;
+import com.tutorial.crud.entity.Producto;
 import com.tutorial.crud.dto.Mensaje;
 import com.tutorial.crud.entity.Compra;
 import com.tutorial.crud.service.CompraService;
+import com.tutorial.crud.service.ProductoService;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,21 +31,24 @@ import io.swagger.annotations.ApiOperation;
 @RequestMapping("/compras")
 @CrossOrigin(origins = "*")
 public class CompraController {
-    
+
     @Autowired
     CompraService compraService;
 
+    @Autowired
+    ProductoService productoService;
+
     @ApiOperation("Muestra una lista de Compras")
     @GetMapping
-    public ResponseEntity<List<Compra>> list(){
+    public ResponseEntity<List<Compra>> list() {
         List<Compra> list = compraService.list();
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
     @ApiOperation("Devuelve una compra por ID")
     @GetMapping("/{id}")
-    public ResponseEntity<?> getById(@PathVariable("id") int id){
-        if(!compraService.existsById(id)){
+    public ResponseEntity<?> getById(@PathVariable("id") int id) {
+        if (!compraService.existsById(id)) {
             return new ResponseEntity<>(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
         }
         Compra compra = compraService.getOne(id).get();
@@ -51,23 +57,24 @@ public class CompraController {
 
     @ApiOperation("Devuelve una compra  por el numero de factura")
     @GetMapping("/numeroFactura/{numeroFactura}")
-    public ResponseEntity<?> getByNombre(@PathVariable("numeroFactura") String numeroFactura){
-        if(!compraService.existsByNombre(numeroFactura))
+    public ResponseEntity<?> getByNombre(@PathVariable("numeroFactura") String numeroFactura) {
+        if (!compraService.existsByNombre(numeroFactura))
             return new ResponseEntity<>(new Mensaje("no existe esta compra"), HttpStatus.NOT_FOUND);
         Compra compra = compraService.getByNombre(numeroFactura).get();
         return new ResponseEntity<>(compra, HttpStatus.OK);
     }
 
-     @ApiOperation("Guarda una compra")
+    @ApiOperation("Guarda una compra")
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody CompraDto compraDto){
-        if(StringUtils.isBlank(compraDto.getNumeroFactura()))
+    public ResponseEntity<?> create(@RequestBody CompraDto compraDto) {
+        if (StringUtils.isBlank(compraDto.getNumeroFactura()))
             return new ResponseEntity<>(new Mensaje("el numeor de factura es obligatorio"), HttpStatus.BAD_REQUEST);
-        if(compraService.existsByNombre(compraDto.getNumeroFactura()))
+        if (compraService.existsByNombre(compraDto.getNumeroFactura()))
             return new ResponseEntity<>(new Mensaje("ese numero de factura ya existe"), HttpStatus.BAD_REQUEST);
-        Compra compra = new Compra (compraDto.getNumeroFactura(), compraDto.getCantidad(), compraDto.getProveedor(), compraDto.getUsuario(), compraDto.getProductos(), compraDto.getEstado());
-        
+        Compra compra = new Compra(compraDto.getNumeroFactura(), compraDto.getCantidad(), compraDto.getProveedor(),
+                compraDto.getUsuario(), compraDto.getProductos(), compraDto.getEstado());
+
         compraService.save(compra);
         return new ResponseEntity<>(new Mensaje("Compra creada"), HttpStatus.OK);
     }
@@ -75,14 +82,36 @@ public class CompraController {
     @ApiOperation("Actualiza una compra")
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable("id")int id, @RequestBody CompraDto compraDto){
-        if(!compraService.existsById(id))
+    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody CompraDto compraDto) {
+        if (!compraService.existsById(id))
             return new ResponseEntity<>(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
-        if(compraService.existsByNombre(compraDto.getNumeroFactura()) && compraService.getByNombre(compraDto.getNumeroFactura()).get().getId() != id)
+        if (compraService.existsByNombre(compraDto.getNumeroFactura())
+                && compraService.getByNombre(compraDto.getNumeroFactura()).get().getId() != id)
             return new ResponseEntity<>(new Mensaje("ese numero de factura  ya existe"), HttpStatus.BAD_REQUEST);
-        if(StringUtils.isBlank(compraDto.getNumeroFactura()))
+        if (StringUtils.isBlank(compraDto.getNumeroFactura()))
             return new ResponseEntity<>(new Mensaje("el nombre es obligatorio"), HttpStatus.BAD_REQUEST);
-    
+
+        for (Producto s : compraDto.getProductos()) {
+
+            Producto producto = productoService.getOne(s.getId()).get();
+
+            if (producto.getEstado() && s.getEstado()) {
+                return new ResponseEntity<>(new Mensaje("Compra invalida: verifique que el producto exista o que su estado sea: true"), HttpStatus.BAD_REQUEST);
+            }
+
+            if (producto.getCantidad() < s.getCantidad()) {
+                return new ResponseEntity<>(new Mensaje("Compra invalida: no hay suficiente cantidad de productos"), HttpStatus.BAD_REQUEST);
+            }
+
+            producto.setCantidad(producto.getCantidad() + s.getCantidad());
+
+            if (producto.getCantidad() == 0) {
+                producto.setEstado(false);  
+            }
+
+            productoService.save(producto);
+        }
+
         Compra compra = compraService.getOne(id).get();
         compra.setCantidad(compraDto.getCantidad());
         compra.setEstado(compraDto.getEstado());
@@ -93,8 +122,8 @@ public class CompraController {
     @ApiOperation("Elimina un compra")
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable("id")int id){
-        if(!compraService.existsById(id))
+    public ResponseEntity<?> delete(@PathVariable("id") int id) {
+        if (!compraService.existsById(id))
             return new ResponseEntity<>(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
         compraService.delete(id);
         return new ResponseEntity<>(new Mensaje("Compra eliminada"), HttpStatus.OK);
