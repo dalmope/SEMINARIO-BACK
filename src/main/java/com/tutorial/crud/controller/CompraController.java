@@ -67,12 +67,27 @@ public class CompraController {
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<?> create(@RequestBody CompraDto compraDto) {
+        Double total = 0.0;
         if (StringUtils.isBlank(compraDto.getNumeroFactura()))
             return new ResponseEntity<>(new Mensaje("el numeor de factura es obligatorio"), HttpStatus.BAD_REQUEST);
         if (compraService.existsByNombre(compraDto.getNumeroFactura()))
             return new ResponseEntity<>(new Mensaje("ese numero de factura ya existe"), HttpStatus.BAD_REQUEST);
-        Compra compra = new Compra(compraDto.getNumeroFactura(), compraDto.getCantidad(), compraDto.getProveedor(),
-                compraDto.getUsuario(), compraDto.getProductos(), compraDto.getEstado());
+
+        for (Producto s : compraDto.getProductos()) {
+            Producto producto = productoService.getOne(s.getId()).get();
+
+            if (!productoService.existsById(s.getId()))
+                return new ResponseEntity<>(new Mensaje("el producto con id " + s.getId() + " no existe"), HttpStatus.BAD_REQUEST);
+            if (s.getCantidad() <= 0)
+                return new ResponseEntity<>(new Mensaje("la cantidad debe ser mayor a 0"), HttpStatus.BAD_REQUEST);
+
+            total += producto.getPrecio() * s.getCantidad();
+            producto.setCantidad(producto.getCantidad() + s.getCantidad());
+            productoService.changeStatus(producto.getId(), true);
+            productoService.save(producto);
+        }
+
+        Compra compra = new Compra(compraDto.getNumeroFactura(), compraDto.getProveedor(), compraDto.getProductos(), true, total);
 
         compraService.save(compra);
         return new ResponseEntity<>(new Mensaje("Compra creada"), HttpStatus.OK);
@@ -95,25 +110,27 @@ public class CompraController {
             Producto producto = productoService.getOne(s.getId()).get();
 
             if (producto.getEstado() && s.getEstado()) {
-                return new ResponseEntity<>(new Mensaje("Compra invalida: verifique que el producto exista o que su estado sea: true"), HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<>(
+                        new Mensaje("Compra invalida: verifique que el producto exista o que su estado sea: true"),
+                        HttpStatus.BAD_REQUEST);
             }
 
             // if (producto.getCantidad() < s.getCantidad()) {
-            //     return new ResponseEntity<>(new Mensaje("Compra invalida: no hay suficiente cantidad de productos"), HttpStatus.BAD_REQUEST);
+            // return new ResponseEntity<>(new Mensaje("Compra invalida: no hay suficiente
+            // cantidad de productos"), HttpStatus.BAD_REQUEST);
             // }
 
             producto.setCantidad(producto.getCantidad() + s.getCantidad());
 
             // if (producto.getCantidad() == 0) {
-            //     producto.setEstado(false);  
+            // producto.setEstado(false);
             // }
+            
 
             productoService.save(producto);
         }
 
         Compra compra = compraService.getOne(id).get();
-        compra.setCantidad(compraDto.getCantidad());
-        compra.setEstado(compraDto.getEstado());
         compraService.save(compra);
         return new ResponseEntity<>(new Mensaje("Compra actualizado"), HttpStatus.OK);
     }

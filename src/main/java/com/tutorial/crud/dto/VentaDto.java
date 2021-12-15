@@ -6,24 +6,20 @@ import javax.validation.constraints.NotBlank;
 
 import com.tutorial.crud.entity.Producto;
 
-public class CompraDto {
+public class VentaDto {
     @NotBlank
     private String numeroFactura;
-    private String proveedor;
+    private String cliente;
     private Set<Producto> productos;
 
-    public CompraDto() {
+    VentaDto() {
     }
 
-    public CompraDto(@NotBlank String numeroFactura, String proveedor, Set<Producto> productos) {
+    public VentaDto(@NotBlank String numeroFactura, String cliente, Set<Producto> productos) {
         this.numeroFactura = numeroFactura;
-        this.proveedor = proveedor;
+        this.cliente = cliente;
         this.productos = productos;
     }
-
-     public CompraDto(@NotBlank String numeroFactura, int cantidad) {
-        this.numeroFactura = numeroFactura;
-     }
 
     public String getNumeroFactura() {
         return numeroFactura;
@@ -33,12 +29,12 @@ public class CompraDto {
         this.numeroFactura = numeroFactura;
     }
 
-    public String getProveedor() {
-        return proveedor;
+    public String getCliente() {
+        return cliente;
     }
 
-    public void setProveedor(String proveedor) {
-        this.proveedor = proveedor;
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
     }
 
     public Set<Producto> getProductos() {

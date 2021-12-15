@@ -1,11 +1,8 @@
 package com.tutorial.crud.service;
 
-
-
 import java.util.List;
 import java.util.Optional;
 
-import com.fasterxml.jackson.databind.ser.std.StdArraySerializers.BooleanArraySerializer;
 import com.tutorial.crud.entity.Compra;
 import com.tutorial.crud.repository.CompraRepository;
 

@@ -9,34 +9,48 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.validation.constraints.NotNull;
+import javax.persistence.JoinColumn;
 
 @Entity
-public class Compra {
-
+public class Venta {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String numeroFactura;
-    private String proveedor;
-    @NotNull
+    private String cliente;
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "compra_productos", joinColumns = @JoinColumn(name = "compra_id"), inverseJoinColumns = @JoinColumn(name = "producto_id"))
+    @JoinTable(name = "venta_productos", joinColumns = @JoinColumn(name = "venta_id"), inverseJoinColumns = @JoinColumn(name = "producto_id"))
     private Set<Producto> productos = new HashSet<>();
     private Boolean estado;
     private Double total;
 
-    public Compra() {
+    public Venta() {
     }
 
-    public Compra(String numeroFactura, String proveedor, @NotNull Set<Producto> productos, Boolean estado, Double total) { 
+    public Venta(String numeroFactura, String cliente,  Set<Producto> productos, Double total) {
         this.numeroFactura = numeroFactura;
-        this.proveedor = proveedor;
         this.productos = productos;
-        this.estado = estado;
+        this.cliente = cliente;
+        this.estado = true;
         this.total = total;
+    }
+
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
+    }
+
+    public String getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
     }
 
     public int getId() {
@@ -55,29 +69,12 @@ public class Compra {
         this.numeroFactura = numeroFactura;
     }
 
-
-    public String getProveedor() {
-        return proveedor;
-    }
-
-    public void setProveedor(String proveedor) {
-        this.proveedor = proveedor;
-    }
-
-    public Set<Producto>  getProductos() {
+    public Set<Producto> getProductos() {
         return productos;
     }
 
     public void setProductos(Set<Producto> productos) {
         this.productos = productos;
-    }
-
-    public Boolean getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
     }
 
     public Double getTotal() {
@@ -90,8 +87,8 @@ public class Compra {
 
     @Override
     public String toString() {
-        return "Compra [estado=" + estado + ", id=" + id + ", numeroFactura=" + numeroFactura
-                + ", productos=" + productos + ", proveedor=" + proveedor + "]";
+        return "Venta [cliente=" + cliente + ", id=" + id + ", numeroFactura=" + numeroFactura + ", productos="
+                + productos + ", total=" + total + "]";
     }
 
     @Override
@@ -111,7 +108,7 @@ public class Compra {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Compra other = (Compra) obj;
+        Venta other = (Venta) obj;
         if (id != other.id)
             return false;
         if (numeroFactura == null) {
