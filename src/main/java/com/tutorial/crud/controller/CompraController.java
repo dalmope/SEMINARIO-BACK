@@ -1,7 +1,6 @@
 package com.tutorial.crud.controller;
 
 import java.util.List;
-import java.util.Set;
 
 import com.tutorial.crud.dto.CompraDto;
 import com.tutorial.crud.entity.Producto;
@@ -99,15 +98,15 @@ public class CompraController {
                 return new ResponseEntity<>(new Mensaje("Compra invalida: verifique que el producto exista o que su estado sea: true"), HttpStatus.BAD_REQUEST);
             }
 
-            if (producto.getCantidad() < s.getCantidad()) {
-                return new ResponseEntity<>(new Mensaje("Compra invalida: no hay suficiente cantidad de productos"), HttpStatus.BAD_REQUEST);
-            }
+            // if (producto.getCantidad() < s.getCantidad()) {
+            //     return new ResponseEntity<>(new Mensaje("Compra invalida: no hay suficiente cantidad de productos"), HttpStatus.BAD_REQUEST);
+            // }
 
             producto.setCantidad(producto.getCantidad() + s.getCantidad());
 
-            if (producto.getCantidad() == 0) {
-                producto.setEstado(false);  
-            }
+            // if (producto.getCantidad() == 0) {
+            //     producto.setEstado(false);  
+            // }
 
             productoService.save(producto);
         }
